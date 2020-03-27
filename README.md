@@ -5,14 +5,21 @@ This script replaces non-text contents of the latex files (e.g., equation, figur
 
 Usage: 
 
-(1) Coding tex file: 
+<ol>
 
+<li>Code tex file: 
+  
+```
 python latextlt.py -f yourlatexfile.tex
+```
 
-(2) Translate yourlatexfile.CODED.txt using google translator or similar 
+<li>Translate <b>yourlatexfile.CODED.txt</b> using google translator or similar 
 
-(3) Decoding tex file:
+<li>Decode translation file:
 
+```
 python latextlt.py -d -f yourlatexfile.tex > yourlatexfile.tlt.tex
+```
 
-(4) Manually review the output yourlatexfile.tlt.tex
+<li> Manually review the output <b>yourlatexfile.tlt.tex</b>
+</ol>
