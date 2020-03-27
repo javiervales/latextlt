@@ -34,11 +34,13 @@ def encode(filename):
     fig = re.compile(r'\\begin{figure}.*?\\end{figure}', re.DOTALL)
     eq = re.compile(r'\\begin{equation}.*?\\end{equation}', re.DOTALL)
     eqn = re.compile(r'\\begin{equation\*}.*?\\end{equation\*}', re.DOTALL)
+    tbl = re.compile(r'\\begin{table}.*?\\end{table}', re.DOTALL)
+    tikz = re.compile(r'\\begin{tikz}.*?\\end{tikz}', re.DOTALL)
     eqs = re.compile(r'\$.*?\$', re.DOTALL)
     cmd = re.compile(r'\\[a-z]*', re.DOTALL)
     slash = re.compile(r'[{,}]', re.DOTALL)
 
-    for ex in [eq, eqn, eqs, cmd, slash]:
+    for ex in [eq, eqn, tbl, tikz, eqs, cmd, slash]:
         latex = ex.sub(hashreplace,latex)
 
     print(f'File processed, total hashs: {counter}.\n\nNext steps:\n\t(1) Translate {filebase}.CODED.txt using google translator (or similar)\n\t(2) Save translation to {filebase}.CODED.tlt\n\t(3) Run "python {__file__} -d -f {filename} > {filebase}.tlt.tex"\n\t(4) Manually review the output {filebase}.tlt.tex\n\t(5) Remove auxiliary files "rm {filebase}.hsh {filebase}.CODED.*"') 
